@@ -1,22 +1,8 @@
-import sys
-
 """
 Write a module docstring here
 """
 
-__author__ = "Evan Azevedo"
-
-def read(input_file):
-    with open(input_file, "r+") as input:
-        lines = input.readlines()
-    board_dimension = lines[0][:-1]
-    initial_position = lines[1][:-1]
-    movements = lines[2][:-1]
-    walls = [wall[:-1] for wall in lines[3:]]
-    return board_dimension, initial_position, movements, walls
-
-def move(movement):
-    return 0
+__author__ = ""
 
 def pacman(input_file):
     """ Use this function to format your input/output arguments. Be sure not to change the order of the output arguments.
@@ -32,8 +18,3 @@ def pacman(input_file):
     """
 
     # return final_pos_x, final_pos_y, coins_collected
-
-if __name__ == "__main__":
-    input_file = sys.argv[1]
-    print(read(input_file))
-    #pacman(input_file)
