@@ -19,6 +19,12 @@ class AllTests(unittest.TestCase):
     def test_runtime(self):
         self.assertEqual(pacman("runtime.txt"), (2142, 147, 148))
 
+    def test_invalid_wall(self):
+        self.assertEqual(pacman("invalid_wall.txt"), (-1, -1, 0))
+
+    def test_invalid_board(self):
+        self.assertEqual(pacman("invalid_board.txt"), (-1, -1, 0))
+
 if __name__ == '__main__':
     for testClass in [AllTests]:
         print('\n\nTest Class: {}\n'.format(testClass.__name__))
