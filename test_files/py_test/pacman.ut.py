@@ -25,6 +25,9 @@ class AllTests(unittest.TestCase):
     def test_invalid_board(self):
         self.assertEqual(pacman("invalid_board.txt"), (-1, -1, 0))
 
+    def test_small(self):
+        self.assertEqual(pacman("small.txt"), (1, 4, 7))
+
 if __name__ == '__main__':
     for testClass in [AllTests]:
         print('\n\nTest Class: {}\n'.format(testClass.__name__))

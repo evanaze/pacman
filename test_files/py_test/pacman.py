@@ -32,10 +32,9 @@ def parse_coord(position):
     return coord
 
 class Game:
-    """This class creates the pacman game, and executed to play with the play() method."""
+    """This class creates the pacman game, and is executed to play with the play() method."""
     def __init__(self, input_file):
         self.input_file = input_file
-        self.read()
 
     def read(self):
         """Reads in the input text file."""
@@ -46,7 +45,7 @@ class Game:
         self.movements = list(lines[2][:-1])
         self.walls = [parse_coord(wall[:-1]) for wall in lines[3:]]
 
-    def initBoard(self):
+    def init_board(self):
         """Creates the board.
 
         This method is the main source for error handling.
@@ -106,7 +105,8 @@ class Game:
 
         Initializes the board and iterates through movements, finally returning the result of the playthrough.
         """
-        self.initBoard()
+        self.read()
+        self.init_board()
         self.coins_collected = 0
         while self.movements:
             self.direction = self.movements.pop(0)
