@@ -71,7 +71,7 @@ class Game:
     def test_move(self):
         """Tests whether the next move is valid"""
         self.valid_move = False
-        if self.next_move.x >= self.board_dimension.x or self.next_move.y >= self.board_dimension.y:
+        if not (0 <= self.next_move.x < self.board_dimension.x and 0 <= self.next_move.y < self.board_dimension.y):
             # tests if we are trying to move outside of the board
             return
         # tests if trying to move towards a wall

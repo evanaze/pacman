@@ -28,6 +28,9 @@ class AllTests(unittest.TestCase):
     def test_small(self):
         self.assertEqual(pacman("small.txt"), (1, 4, 7))
 
+    def test_uneven(self):
+        self.assertEqual(pacman("uneven.txt"), (0, 2, 10))
+
 if __name__ == '__main__':
     for testClass in [AllTests]:
         print('\n\nTest Class: {}\n'.format(testClass.__name__))
