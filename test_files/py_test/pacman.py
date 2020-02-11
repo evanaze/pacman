@@ -6,6 +6,7 @@ import numpy as np
 
 """Pacman player developed in Python.
 
+Date: 2/11/20
 This module includes the solution to the C3.ai FDSE Technical Challenge.
 This code has been written and tested in Python 3.7.6.
 
@@ -27,6 +28,7 @@ __author__ = "Evan Azevedo"
 Coordinate = namedtuple("Coordinate", ['x', 'y'])
 
 def parse_coord(position):
+    """Utility method to parse coordinates from the text file."""
     position = position.split(' ')
     coord = Coordinate(int(position[0]), int(position[1]))
     return coord
@@ -35,6 +37,7 @@ class Game:
     """This class creates the pacman game, and is executed to play with the play() method."""
     def __init__(self, input_file):
         self.input_file = input_file
+        self.coins_collected = 0
 
     def read(self):
         """Reads in the input text file."""
@@ -80,6 +83,7 @@ class Game:
 
     def move(self):
         """Parses the input move command, executes the test_move() method, then moves the player."""
+        self.direction = self.movements.pop(0) # load the next move
         if self.direction == "N":
             self.next_move = Coordinate(self.player.x, self.player.y + 1)
         if self.direction == "S":
@@ -96,20 +100,14 @@ class Game:
                 self.coins_collected += 1
                 self.board[self.player.x, self.player.y] = 0
 
-    def print_move(self):
-        """Prints the move for debugging purposes."""
-        print(self.player, self.direction, self.coins_collected)
-
     def play(self):
         """The main function for the Game class.
 
         Initializes the board and iterates through movements, finally returning the result of the playthrough.
         """
-        self.read()
-        self.init_board()
-        self.coins_collected = 0
-        while self.movements:
-            self.direction = self.movements.pop(0)
+        self.read() # read and parse the input file
+        self.init_board() # create the game board
+        while self.movements: # iterate through the movements
             self.move()
         return self.player.x, self.player.y, self.coins_collected
 
